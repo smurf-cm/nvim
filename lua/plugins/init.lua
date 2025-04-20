@@ -22,17 +22,65 @@ augroup end
 require("packer").startup(function(use)
     use { "wbthomason/packer.nvim" }
 
-    use { "neovim/nvim-lspconfig", config = require("plugins.lsp") }
-    use { "nvim-telescope/telescope.nvim", config = require("plugins.telescope") }
-    use { "nvim-treesitter/nvim-treesitter", config = require("plugins.treesitter") }
-    use { "lewis6991/gitsigns.nvim", config = require("plugins.gitsigns") }
-    use { "nvim-telescope/telescope-file-browser.nvim", requires = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" } }
-    use { "akinsho/toggleterm.nvim", tag = "*", config = require("toggleterm").setup() }
-    use { "eldritch-theme/eldritch.nvim" }
-    -- use { 'nvim-lualine/lualine.nvim', requires = { 'nvim-tree/nvim-web-devicons', opt = true }, config = require('lualine').get_config() }
-    --
-    use { "williamboman/mason.nvim", config = require("plugins.mason") }
-    use { "williamboman/mason-lspconfig.nvim" }
+    use { "williamboman/mason.nvim" }
+    use { "williamboman/mason-lspconfig.nvim", after = "mason.nvim"}
 
     use { "nvim-lua/plenary.nvim" }
+
+    use {
+        "nvim-telescope/telescope.nvim",
+        config = function()
+            require("plugins.telescope")
+        end
+    }
+
+    use {
+        "nvim-treesitter/nvim-treesitter",
+        config = function()
+            require("plugins.treesitter")
+        end
+    }
+
+    use {
+        "lewis6991/gitsigns.nvim",
+        config = function()
+            require("plugins.gitsigns")
+        end
+    }
+
+    use {
+        "nvim-telescope/telescope-file-browser.nvim",
+        requires = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
+    }
+
+    use {
+        "akinsho/toggleterm.nvim",
+        tag = "*",
+        config = function()
+            require("toggleterm").setup()
+        end
+    }
+
+    use { "eldritch-theme/eldritch.nvim" }
+
+    use { "hrsh7th/cmp-nvim-lsp" }
+    use { "hrsh7th/cmp-buffer" }
+    use { "hrsh7th/cmp-path" }
+    use { "L3MON4D3/LuaSnip" }
+    use { "saadparwaiz1/cmp_luasnip" }
+
+    use {
+        "hrsh7th/nvim-cmp",
+        requires = {
+            "hrsh7th/cmp-nvim-lsp",
+            "hrsh7th/cmp-buffer",
+            "hrsh7th/cmp-path",
+            "L3MON4D3/LuaSnip",
+            "saadparwaiz1/cmp_luasnip",
+        },
+        config = function()
+            require("plugins.cmp")
+        end
+    }
 end)
+
