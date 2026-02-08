@@ -2,6 +2,7 @@
 -- ~/.config/nvim/lua/plugins/gitsigns.lua
 --
 --
+
 return function()
     require('gitsigns').setup {
         signs = {

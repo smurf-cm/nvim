@@ -17,7 +17,7 @@ vim.api.nvim_set_keymap("n", "<leader>fh", "<cmd>Telescope help_tags<cr>", opts)
 vim.keymap.set("n", "<leader>fe", function()
     local config = require("config.telescope_file_browser").config
     require("telescope").extensions.file_browser.file_browser(config)
-end, { desc = "Telescope File Browser" })
+end, opts)
 
 --
 -- toggleterm
@@ -54,7 +54,7 @@ end, { desc = "Toggle Vertical Terminal" })
 --
 -- lsp
 --
-vim.keymap.set("n", "<leader>m", function()
+vim.keymap.set("n", "<leader>f", function()
   vim.diagnostic.open_float(nil, { focus = false })
 end)
 

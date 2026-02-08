@@ -1,6 +1,7 @@
 --
 -- ~/.config/nvim/lua/plugins/testscope.lua
 --
+--
 
 return function()
     local actions = require("telescope.actions")
@@ -17,38 +18,17 @@ return function()
             },
         },
         pickers = {
-            find_files = {
-                theme = "dropdown",
-                hidden = true,
-                previewer = false,
-            },
-            live_grep = {
-                theme = "dropdown",
-            },
-            buffers = {
-                theme = "dropdown",
-            },
-            help_tags = {
-                theme = "dropdown",
-            },
+            find_files = { hidden = true, previewer = false, },
         },
         extensions = {
             fzf = {
                 fuzzy = true,
                 override_generic_sorter = true,
                 override_file_sorter = true,
-                case_mode = "ignore_case",
+                case_mode = "smart_case",
             },
-            file_browser = {
-                theme = "ivy",
-                hijack_netrw = true,
-                mappings = {},
-                hidden = { file_browser = true, folder_browser = true },
-            },
-
+            file_browser = require("config.telescope_file_browser").config
         },
     }
-
-    require("telescope").load_extension("file_browser")
     require("telescope").load_extension("fzf")
 end

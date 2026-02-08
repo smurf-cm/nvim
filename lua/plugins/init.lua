@@ -30,7 +30,7 @@ require("packer").startup(function(use)
     use {
         "nvim-telescope/telescope.nvim",
         config = function()
-            require("plugins.telescope")
+            require("plugins.telescope")()
         end
     }
 
@@ -50,7 +50,11 @@ require("packer").startup(function(use)
 
     use {
         "nvim-telescope/telescope-file-browser.nvim",
-        requires = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
+        requires = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
+        wants = {"nvim-telescope/telescope.nvim"},
+        config = function()
+            require("telescope").load_extension("file_browser")
+        end
     }
 
     use {
@@ -80,6 +84,18 @@ require("packer").startup(function(use)
         },
         config = function()
             require("plugins.cmp")
+        end
+    }
+
+    use {
+        "MeanderingProgrammer/markdown.nvim",
+        ft = "markdown",
+        requires = { "nvim-treesitter/nvim-treesitter" },
+        config = function()
+            require("render-markdown").setup()
+            vim.keymap.set("n", "<leader>mp", function()
+                require("render-markdown").toggle()
+            end, { desc = "Toggle Markdown Preview" })
         end
     }
 end)
