@@ -58,6 +58,15 @@ require("packer").startup(function(use)
     }
 
     use {
+        "nvim-telescope/telescope-fzf-native.nvim",
+        run = "make",
+        config = function()
+          require("telescope").load_extension("fzf")
+        end
+    }
+
+
+    use {
         "akinsho/toggleterm.nvim",
         tag = "*",
         config = function()
