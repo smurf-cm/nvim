@@ -107,5 +107,6 @@ require("packer").startup(function(use)
             end, { desc = "Toggle Markdown Preview" })
         end
     }
+    use { "catppuccin/nvim", as = "catppuccin" }
 end)
 

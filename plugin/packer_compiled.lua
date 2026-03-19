@@ -49,8 +49,8 @@ local function save_profiles(threshold)
 end
 
 time([[Luarocks path setup]], true)
-local package_path_str = "/home/cormac/.cache/nvim/packer_hererocks/2.1.1767980792/share/lua/5.1/?.lua;/home/cormac/.cache/nvim/packer_hererocks/2.1.1767980792/share/lua/5.1/?/init.lua;/home/cormac/.cache/nvim/packer_hererocks/2.1.1767980792/lib/luarocks/rocks-5.1/?.lua;/home/cormac/.cache/nvim/packer_hererocks/2.1.1767980792/lib/luarocks/rocks-5.1/?/init.lua"
-local install_cpath_pattern = "/home/cormac/.cache/nvim/packer_hererocks/2.1.1767980792/lib/lua/5.1/?.so"
+local package_path_str = "/home/cormac/.cache/nvim/packer_hererocks/2.1.1772619647/share/lua/5.1/?.lua;/home/cormac/.cache/nvim/packer_hererocks/2.1.1772619647/share/lua/5.1/?/init.lua;/home/cormac/.cache/nvim/packer_hererocks/2.1.1772619647/lib/luarocks/rocks-5.1/?.lua;/home/cormac/.cache/nvim/packer_hererocks/2.1.1772619647/lib/luarocks/rocks-5.1/?/init.lua"
+local install_cpath_pattern = "/home/cormac/.cache/nvim/packer_hererocks/2.1.1772619647/lib/lua/5.1/?.so"
 if not string.find(package.path, package_path_str, 1, true) then
   package.path = package.path .. ';' .. package_path_str
 end
@@ -78,6 +78,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/cormac/.local/share/nvim/site/pack/packer/start/LuaSnip",
     url = "https://github.com/L3MON4D3/LuaSnip"
+  },
+  catppuccin = {
+    loaded = true,
+    path = "/home/cormac/.local/share/nvim/site/pack/packer/start/catppuccin",
+    url = "https://github.com/catppuccin/nvim"
   },
   ["cmp-buffer"] = {
     loaded = true,
@@ -180,14 +185,10 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: telescope.nvim
-time([[Config for telescope.nvim]], true)
-try_loadstring("\27LJ\2\n5\0\0\3\0\2\0\0056\0\0\0'\2\1\0B\0\2\2B\0\1\1K\0\1\0\22plugins.telescope\frequire\0", "config", "telescope.nvim")
-time([[Config for telescope.nvim]], false)
--- Config for: gitsigns.nvim
-time([[Config for gitsigns.nvim]], true)
-try_loadstring("\27LJ\2\n0\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\21plugins.gitsigns\frequire\0", "config", "gitsigns.nvim")
-time([[Config for gitsigns.nvim]], false)
+-- Config for: telescope-fzf-native.nvim
+time([[Config for telescope-fzf-native.nvim]], true)
+try_loadstring("\27LJ\2\nH\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0'\2\3\0B\0\2\1K\0\1\0\bfzf\19load_extension\14telescope\frequire\0", "config", "telescope-fzf-native.nvim")
+time([[Config for telescope-fzf-native.nvim]], false)
 -- Config for: nvim-cmp
 time([[Config for nvim-cmp]], true)
 try_loadstring("\27LJ\2\n+\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\16plugins.cmp\frequire\0", "config", "nvim-cmp")
@@ -196,18 +197,22 @@ time([[Config for nvim-cmp]], false)
 time([[Config for toggleterm.nvim]], true)
 try_loadstring("\27LJ\2\n8\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\15toggleterm\frequire\0", "config", "toggleterm.nvim")
 time([[Config for toggleterm.nvim]], false)
--- Config for: nvim-treesitter
-time([[Config for nvim-treesitter]], true)
-try_loadstring("\27LJ\2\n2\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\23plugins.treesitter\frequire\0", "config", "nvim-treesitter")
-time([[Config for nvim-treesitter]], false)
--- Config for: telescope-fzf-native.nvim
-time([[Config for telescope-fzf-native.nvim]], true)
-try_loadstring("\27LJ\2\nH\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0'\2\3\0B\0\2\1K\0\1\0\bfzf\19load_extension\14telescope\frequire\0", "config", "telescope-fzf-native.nvim")
-time([[Config for telescope-fzf-native.nvim]], false)
 -- Config for: telescope-file-browser.nvim
 time([[Config for telescope-file-browser.nvim]], true)
 try_loadstring("\27LJ\2\nQ\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0'\2\3\0B\0\2\1K\0\1\0\17file_browser\19load_extension\14telescope\frequire\0", "config", "telescope-file-browser.nvim")
 time([[Config for telescope-file-browser.nvim]], false)
+-- Config for: nvim-treesitter
+time([[Config for nvim-treesitter]], true)
+try_loadstring("\27LJ\2\n2\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\23plugins.treesitter\frequire\0", "config", "nvim-treesitter")
+time([[Config for nvim-treesitter]], false)
+-- Config for: telescope.nvim
+time([[Config for telescope.nvim]], true)
+try_loadstring("\27LJ\2\n5\0\0\3\0\2\0\0056\0\0\0'\2\1\0B\0\2\2B\0\1\1K\0\1\0\22plugins.telescope\frequire\0", "config", "telescope.nvim")
+time([[Config for telescope.nvim]], false)
+-- Config for: gitsigns.nvim
+time([[Config for gitsigns.nvim]], true)
+try_loadstring("\27LJ\2\n0\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\21plugins.gitsigns\frequire\0", "config", "gitsigns.nvim")
+time([[Config for gitsigns.nvim]], false)
 -- Load plugins in order defined by `after`
 time([[Sequenced loading]], true)
 vim.cmd [[ packadd mason.nvim ]]

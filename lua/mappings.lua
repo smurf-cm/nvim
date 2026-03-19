@@ -5,6 +5,21 @@
 local opts = { noremap = true, silent = true }
 
 vim.keymap.set("n", "<leader>w", ":w<CR>", { desc = "Save File" })
+vim.keymap.set('n', '<C-h>', '<C-w>h', { silent = true })
+vim.keymap.set('n', '<C-j>', '<C-w>j', { silent = true })
+vim.keymap.set('n', '<C-k>', '<C-w>k', { silent = true })
+vim.keymap.set('n', '<C-l>', '<C-w>l', { silent = true })
+
+vim.keymap.set({ 'n', 'i', 'v' }, '<C-s>', function()
+    vim.cmd('write')  -- :w
+end, { desc = 'Save file' })
+
+vim.keymap.set('i', '<C-s><C-s>', '<Esc>:w<CR>a', { desc = 'Save & continue insert' })
+
+vim.api.nvim_create_autocmd('FocusLost', {
+    callback = function() vim.cmd('silent! write') end
+})
+
 
 --
 -- telescope
