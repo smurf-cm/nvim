@@ -2,6 +2,10 @@
 -- ~/.config/nvim/lua/mappings.lua
 --
 --
+local function safe_del(mode, lhs)
+  pcall(vim.keymap.del, mode, lhs)
+end
+
 local opts = { noremap = true, silent = true }
 
 vim.keymap.set("n", "<leader>w", ":w<CR>", { desc = "Save File" })
@@ -9,6 +13,12 @@ vim.keymap.set('n', '<C-h>', '<C-w>h', { silent = true })
 vim.keymap.set('n', '<C-j>', '<C-w>j', { silent = true })
 vim.keymap.set('n', '<C-k>', '<C-w>k', { silent = true })
 vim.keymap.set('n', '<C-l>', '<C-w>l', { silent = true })
+
+-- unbind keys for tmux
+safe_del("n", "<C-n>")
+safe_del("n", "<C-p>")
+safe_del("i", "<C-n>")
+safe_del("i", "<C-p>")
 
 vim.keymap.set({ 'n', 'i', 'v' }, '<C-s>', function()
     vim.cmd('write')  -- :w
