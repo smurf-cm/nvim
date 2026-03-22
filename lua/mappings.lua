@@ -20,6 +20,9 @@ safe_del("n", "<C-p>")
 safe_del("i", "<C-n>")
 safe_del("i", "<C-p>")
 
+-- Open a full-width horizontal terminal at the bottom
+vim.keymap.set('n', '<leader>ft', ':botright split | terminal<CR>i', { desc = "Full-width bottom terminal" })
+
 vim.keymap.set({ 'n', 'i', 'v' }, '<C-s>', function()
     vim.cmd('write')  -- :w
 end, { desc = 'Save file' })
