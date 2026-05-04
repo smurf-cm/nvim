@@ -8,7 +8,7 @@ require("mason-lspconfig").setup({
     ensure_installed = {
         "lua_ls",
         "rust_analyzer",
-        "pylyzer",
+        "jedi_language_server",
     },
-    automatic_installation = true,  -- Automatically install missing servers
+    automatic_installation = true,
 })

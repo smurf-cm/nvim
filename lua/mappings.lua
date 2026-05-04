@@ -19,8 +19,37 @@ safe_del("n", "<C-n>")
 safe_del("n", "<C-p>")
 safe_del("i", "<C-n>")
 safe_del("i", "<C-p>")
+--
 
+
+--
+-- LSP Navigation (Splits)
+--
+local function lsp_jump_split(split_cmd)
+    local params = vim.lsp.util.make_position_params()
+    vim.lsp.buf_request(0, "textDocument/definition", params, function(err, result, ctx, config)
+        if err or not result or vim.tbl_isempty(result) then
+            print("Definition not found")
+            return
+        end
+
+        local location = vim.islist(result) and result[1] or result
+        vim.cmd(split_cmd)
+        vim.lsp.util.jump_to_location(location, "utf-8")
+    end)
+end
+
+-- Standard Definition jump
+vim.keymap.set("n", "<leader>d", vim.lsp.buf.definition, { desc = "LSP Definition" })
+-- spd for vertical split (matching your request)
+vim.keymap.set("n", "<leader>vd", function() lsp_jump_split("vsplit") end, { desc = "LSP Definition Vertical Split" })
+-- vsd for horizontal split (matching your request)
+vim.keymap.set("n", "<leader>hd", function() lsp_jump_split("split") end, { desc = "LSP Definition Horizontal Split" })
+--
+
+--
 -- Open a full-width horizontal terminal at the bottom
+--
 vim.keymap.set('n', '<leader>ft', ':botright split | terminal<CR>i', { desc = "Full-width bottom terminal" })
 
 vim.keymap.set({ 'n', 'i', 'v' }, '<C-s>', function()
@@ -33,6 +62,7 @@ vim.api.nvim_create_autocmd('FocusLost', {
     callback = function() vim.cmd('silent! write') end
 })
 
+--
 
 --
 -- telescope

@@ -5,13 +5,12 @@
 local M = {}
 
 M.settings = {
-  cmd = { "pylyzer" },
-  settings = {
-    python = {
-      analysis = {
-        typeCheckingMode = "basic",
-        diagnosticMode = "openFilesOnly",
-      },
+  jedi_language_server = {
+    completion = {
+      disableSnippets = false,
+    },
+    diagnostics = {
+      enable = true,
     },
   },
 }
