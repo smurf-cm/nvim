@@ -1,3 +1,5 @@
+sudo pacman -S tree-sitter tree-sitter-cli xsel
+
 rm -rf ~/.local/share/nvim/site/pack/packer/
 rm -f ~/.local/share/nvim/plugin/packer_compiled.lua
 

@@ -15,12 +15,24 @@ M.treesitter = {
 }
 
 M.close_fold_kinds_for_ft = {
-    default = { "imports", "comment" },
+    default = {
+        "imports",
+        "comment",
+    },
+
     python = {
         "import_statement",
         "import_from_statement",
         "class_definition",
         "function_definition",
+    },
+
+    rust = {
+        "use_declaration",
+        "mod_item",
+        "struct_item",
+        "impl_item",
+        "function_item",
     },
 }
 
