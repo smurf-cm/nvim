@@ -5,3 +5,4 @@
 
 require("autocmds.lsp")
 require("autocmds.telescope_file_browser")
+require("autocmds.clipboard")
